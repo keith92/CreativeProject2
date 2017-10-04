@@ -61,6 +61,13 @@
         $.getJSON(myurl,function(data) {
           console.log(data);
           var name = capitalize(data['name']);
+          var number = data['id']+"";
+          if (Number(number) < 100) {
+            number = "0" + number;
+            if (Number(number) < 10) {
+              number = "0" + number;
+            }
+          }
           var imgurl = data['sprites']['front_default'];
           var type = capitalize(data['types'][0]['type']['name']);
           if(data['types'].length > 1) {
@@ -86,7 +93,7 @@
               }
               location = "Location: " + location.join(" ");
             }
-            var newHtml = "<h3>"+name+"<br><img src=\""+imgurl+"\"><br>";
+            var newHtml = "<h3>"+number+": "+name+"<br><img src=\""+imgurl+"\"><br>";
             newHtml += getTypeLogo(type);
             if (type2 != null) {
               newHtml += getTypeLogo(type2);
@@ -129,14 +136,11 @@
 
   <body>
     <div class="well">
-<<<<<<< HEAD
       <header>
         <img id="logo" src="Assets/pokedexlogo.png" alt="PokeDex Logo">
         <br>
         PokeDex
       </header>
-=======
->>>>>>> d797d8eb76659840b0a46f4670d3fdb392b56299
       <form class="form-inline">
         <div class="form-group">
           <label for="searchBar">Search Pokemon:</label>
