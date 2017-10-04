@@ -1,21 +1,36 @@
+
 p {
-  margin:0
+  margin:0;
+  margin-left: 120px;
 }
 
 .form-inline {
   text-align: center;
 }
 
-body header {
+body {
+  background-color: black;
+}
+
+.screen header {
   text-align: center;
   font-size: 30px;
 
 }
 
-body header img {
+.screen header img {
   width: 10%;
 }
 
+#resultsDiv {
+  border-radius: 10px;
+  border: 40px solid darkred;
+  background-color: white;
+  margin:0;
+  width: 50%;
+  position: absolute;
+  left: 24%;
+}
 #resultsDiv h3{
   text-align: center;
 }

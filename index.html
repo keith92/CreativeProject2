@@ -73,12 +73,12 @@
           if(data['types'].length > 1) {
             var type2 = capitalize(data['types'][1]['type']['name'])
           }
-          var speed = "Speed: " + data['stats'][0]['base_stat'];
-          var spdef = "Special-Defense: " + data['stats'][1]['base_stat'];
-          var spatt = "Special-Attack: " + data['stats'][2]['base_stat'];
-          var def = "Defense: " + data['stats'][3]['base_stat'];
-          var att = "Attack: " + data['stats'][4]['base_stat'];
-          var hp = "HP: " + data['stats'][5]['base_stat'];
+          var speed = "<b>Speed: </b>" + data['stats'][0]['base_stat'];
+          var spdef = "<b>Special-Defense: </b>" + data['stats'][1]['base_stat'];
+          var spatt = "<b>Special-Attack: </b>" + data['stats'][2]['base_stat'];
+          var def = "<b>Defense: </b>" + data['stats'][3]['base_stat'];
+          var att = "<b>Attack: </b>" + data['stats'][4]['base_stat'];
+          var hp = "<b>HP: </b>" + data['stats'][5]['base_stat'];
           var locationUrlSuffix = data['location_area_encounters'];
           var location;
 
@@ -91,7 +91,7 @@
               for(i = 0; i < location.length; i++) {
                 location[i] = capitalize(location[i]);
               }
-              location = "Location: " + location.join(" ");
+              location = "<b>Location: </b>" + location.join(" ");
             }
             var newHtml = "<h3>"+number+": "+name+"<br><img src=\""+imgurl+"\"><br>";
             newHtml += getTypeLogo(type);
@@ -100,7 +100,7 @@
             }
             newHtml += "</h3>";
             if(data.length > 0) {
-              newHtml += "<p>"+location+"</p><br>";
+              newHtml += "<p>"+location+"</p>";
             }
             newHtml += "<p>"+speed+"</p><p>"+spdef+"</p><p>"+spatt+"</p><p>"+def+"</p><p>"+att+"</p><p>"+hp+"</p>";
 
@@ -133,8 +133,8 @@
       });
     </script>
   </head>
-
-  <body>
+<body>
+  <body class="screen">
     <div class="well">
       <header>
         <img id="logo" src="Assets/pokedexlogo.png" alt="PokeDex Logo">
@@ -154,8 +154,30 @@
         </div>
       </form>
     </div>
+    
     <div id="resultsDiv" class="col-md-4 col-md-offset-4">
-
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
+
   </body>
+</body>
+  <footer>
+  </footer>
 </html>
