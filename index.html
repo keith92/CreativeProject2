@@ -13,31 +13,41 @@
       function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
+      function findPokemon() {
+        var value = $("#searchBar").val();
+        var myurl = "https://pokeapi.co/api/v2/pokemon/";
+        myurl += value.toLowerCase();
+        console.log(myurl);
+        $.getJSON(myurl,function(data) {
+          console.log(data);
+          var name = capitalize(data['name']);
+          var imgurl = data['sprites']['front_default'];
+          var type = capitalize(data['types'][0]['type']['name']);
+          var speed = "Speed: " + data['stats'][0]['base_stat'];
+          var spdef = "Special-Defense: " + data['stats'][1]['base_stat'];
+          var spatt = "Special-Attack: " + data['stats'][2]['base_stat'];
+          var def = "Defense: " + data['stats'][3]['base_stat'];
+          var att = "Attack: " + data['stats'][4]['base_stat'];
+          var hp = "HP: " + data['stats'][5]['base_stat'];
+          if(data['types'].length > 1) {
+            type += " " + capitalize(data['types'][1]['type']['name'])
+          }
+          $("#resultsDiv").html("<h3>"+name+"</h3><img src=\""+imgurl+"\"><p>"+type+"</p><br><p>"+speed+"</p><p>"+spdef+"</p><p>"+spatt+"</p><p>"+def+"</p><p>"+att+"</p><p>"+hp+"</p>");
+        });
+      }
 
       $(document).ready(function() {
-        $("#searchButton").click(function(e){
-          var value = $("#searchBar").val();
-          var myurl = "https://pokeapi.co/api/v2/pokemon/";
-          myurl += value.toLowerCase();
-          console.log(myurl);
-          $.getJSON(myurl,function(data) {
-            console.log(data);
-            var name = capitalize(data['name']);
-            var imgurl = data['sprites']['front_default'];
-            var type = capitalize(data['types'][0]['type']['name']);
-            var speed = "Speed: " + data['stats'][0]['base_stat'];
-            var spdef = "Special-Defense: " + data['stats'][1]['base_stat'];
-            var spatt = "Special-Attack: " + data['stats'][2]['base_stat'];
-            var def = "Defense: " + data['stats'][3]['base_stat'];
-            var att = "Attack: " + data['stats'][4]['base_stat'];
-            var hp = "HP: " + data['stats'][5]['base_stat'];
-            if(data['types'].length > 1) {
-              type += " " + capitalize(data['types'][1]['type']['name'])
-            }
-            $("#resultsDiv").html("<h3>"+name+"</h3><img src=\""+imgurl+"\"><p>"+type+"</p><br><p>"+speed+"</p><p>"+spdef+"</p><p>"+spatt+"</p><p>"+def+"</p><p>"+att+"</p><p>"+hp+"</p>");
-          });
+        $("#searchBar").keypress(function(event) {
+          var key = event.which;
+          if (key == 13) {
+            $("#searchButton").click();
+            return false;
+          }
         });
 
+        $("#searchButton").click(function(e){
+          findPokemon();
+        });
         $("#searchSelect").on('change', function(e){
           var value = $("#searchSelect").val();
           if(value == "Number") {
