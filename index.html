@@ -1,5 +1,7 @@
 <html>
   <head>
+    <title>Pok&#233;Dex</title>
+    <link rel="shortcut icon" type="image/x-icon" href="Assets/pokedexlogo.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -102,11 +104,15 @@
             if(data.length > 0) {
               newHtml += "<p>"+location+"</p>";
             }
-            newHtml += "<p>"+speed+"</p><p>"+spdef+"</p><p>"+spatt+"</p><p>"+def+"</p><p>"+att+"</p><p>"+hp+"</p><br>";
+            newHtml += makeStatTable(speed, spdef, spatt, def, att, hp);
 
             $("#resultsDiv").html(newHtml);
           });
         });
+      }
+
+      function makeStatTable(speed, spdef, spatt, def, att, hp){
+        return "<table class=\"table table-hover\"><tbody><tr><td><b>Speed</b></td><td>"+speed+"</td></tr><tr><td><b>Special Defense</b></td><td>"+spdef+"</td></tr><tr><td><b>Special Attack</b></td><td>"+spatt+"</td></tr><tr><td><b>Defense</b></td><td>"+def+"</td></tr><tr><td><b>Attack</b></td><td>"+att+"</td></tr><tr><td><b>HP</b></td><td>"+hp+"</td></tr></tbody></table>";
       }
 
       $(document).ready(function() {
@@ -139,12 +145,12 @@
       <header>
         <img id="logo" src="Assets/pokedexlogo.png" alt="PokeDex Logo">
         <br>
-        PokeDex
+        Pok&#233;Dex
       </header>
       <form class="form-inline">
         <div class="form-group">
-          <label for="searchBar">Search Pokemon:</label>
-          <input type="text" class="form-control" id="searchBar" placeholder="Pokemon Number">
+          <label for="searchBar">Search Pok&#233;mon:</label>
+          <input type="text" class="form-control" id="searchBar" placeholder="Pok&#233;mon Number">
           <select class="form-control" id="searchSelect">
             <option>Number</option>
             <option>Name</option>
