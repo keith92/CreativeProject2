@@ -13,6 +13,46 @@
       function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       }
+      function getTypeLogo(type) {
+        switch(type) {
+          case "Normal":
+            return "<img class=\"typelogo\" src=\"Assets/normaltype.png\">";
+          case "Fire":
+            return "<img class=\"typelogo\" src=\"Assets/firetype.png\">";
+          case "Water":
+            return "<img class=\"typelogo\" src=\"Assets/watertype.png\">";
+          case "Electric":
+            return "<img class=\"typelogo\" src=\"Assets/electrictype.png\">";
+          case "Grass":
+            return "<img class=\"typelogo\" src=\"Assets/grasstype.png\">";
+          case "Ice":
+            return "<img class=\"typelogo\" src=\"Assets/icetype.png\">";
+          case "Fighting":
+            return "<img class=\"typelogo\" src=\"Assets/fightingtype.png\">";
+          case "Poison":
+            return "<img class=\"typelogo\" src=\"Assets/poisontype.png\">";
+          case "Ground":
+            return "<img class=\"typelogo\" src=\"Assets/groundtype.png\">";
+          case "Flying":
+            return "<img class=\"typelogo\" src=\"Assets/flyingtype.png\">";
+          case "Psychic":
+            return "<img class=\"typelogo\" src=\"Assets/psychictype.png\">";
+          case "Bug":
+            return "<img class=\"typelogo\" src=\"Assets/bugtype.png\">";
+          case "Rock":
+            return "<img class=\"typelogo\" src=\"Assets/rocktype.png\">";
+          case "Ghost":
+            return "<img class=\"typelogo\" src=\"Assets/ghosttype.png\">";
+          case "Dragon":
+            return "<img class=\"typelogo\" src=\"Assets/dragontype.png\">";
+          case "Dark":
+            return "<img class=\"typelogo\" src=\"Assets/darktype.png\">";
+          case "Steel":
+            return "<img class=\"typelogo\" src=\"Assets/steeltype.png\">";
+          case "Fairy":
+            return "<img class=\"typelogo\" src=\"Assets/fairytype.png\">";
+          }
+      }
       function findPokemon() {
         var value = $("#searchBar").val();
         var myurl = "https://pokeapi.co/api/v2/pokemon/";
@@ -24,7 +64,7 @@
           var imgurl = data['sprites']['front_default'];
           var type = capitalize(data['types'][0]['type']['name']);
           if(data['types'].length > 1) {
-            type += " " + capitalize(data['types'][1]['type']['name'])
+            var type2 = capitalize(data['types'][1]['type']['name'])
           }
           var speed = "Speed: " + data['stats'][0]['base_stat'];
           var spdef = "Special-Defense: " + data['stats'][1]['base_stat'];
@@ -46,7 +86,12 @@
               }
               location = "Location: " + location.join(" ");
             }
-            var newHtml = "<h3>"+name+"</h3><img src=\""+imgurl+"\"><p>"+type+"</p><br>";
+            var newHtml = "<h3>"+name+"<br><img src=\""+imgurl+"\"><br>";
+            newHtml += getTypeLogo(type);
+            if (type2 != null) {
+              newHtml += getTypeLogo(type2);
+            }
+            newHtml += "</h3>";
             if(data.length > 0) {
               newHtml += "<p>"+location+"</p><br>";
             }
@@ -85,7 +130,7 @@
   <body>
     <div class="well">
       <header>
-        <img id="logo" src="pokedexlogo.png" alt="PokeDex Logo">
+        <img id="logo" src="Assets/pokedexlogo.png" alt="PokeDex Logo">
         <br>
         PokeDex
       </header>
@@ -98,6 +143,7 @@
             <option>Name</option>
           </select>
           <button id="searchButton" type="button" class="btn btn-primary">Search</button>
+          <p id="disclaimer">Disclaimer: API can be slow, please be patient</p>
         </div>
       </form>
     </div>

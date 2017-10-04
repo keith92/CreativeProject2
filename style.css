@@ -15,3 +15,15 @@ body header {
 body header img {
   width: 10%;
 }
+
+#resultsDiv h3{
+  text-align: center;
+}
+
+#resultsDiv img {
+  text-align: center;
+}
+
+.typelogo {
+  width: 80px;
+}
