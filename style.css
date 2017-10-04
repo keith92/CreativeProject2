@@ -3,6 +3,15 @@ p {
 }
 
 .form-inline {
-  margin:0 auto;
-  width:50%
+  text-align: center;
+}
+
+body header {
+  text-align: center;
+  font-size: 30px;
+
+}
+
+body header img {
+  width: 10%;
 }
