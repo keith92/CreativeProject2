@@ -75,12 +75,12 @@
           if(data['types'].length > 1) {
             var type2 = capitalize(data['types'][1]['type']['name'])
           }
-          var speed = "<b>Speed: </b>" + data['stats'][0]['base_stat'];
-          var spdef = "<b>Special-Defense: </b>" + data['stats'][1]['base_stat'];
-          var spatt = "<b>Special-Attack: </b>" + data['stats'][2]['base_stat'];
-          var def = "<b>Defense: </b>" + data['stats'][3]['base_stat'];
-          var att = "<b>Attack: </b>" + data['stats'][4]['base_stat'];
-          var hp = "<b>HP: </b>" + data['stats'][5]['base_stat'];
+          var speed = data['stats'][0]['base_stat'];
+          var spdef = data['stats'][1]['base_stat'];
+          var spatt = data['stats'][2]['base_stat'];
+          var def = data['stats'][3]['base_stat'];
+          var att = data['stats'][4]['base_stat'];
+          var hp = data['stats'][5]['base_stat'];
           var locationUrlSuffix = data['location_area_encounters'];
           var location;
 
